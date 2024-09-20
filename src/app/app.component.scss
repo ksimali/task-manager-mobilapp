@@ -1,0 +1,51 @@
+$background_color: #333;
+$color_navigation_link: #fff;
+$color_navigation_link_hover: #ddd;
+
+.app-header {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+
+    nav{
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        li{
+            a{
+                color: $color_navigation_link;
+                text-decoration: none;
+                font-weight: bold;
+                font-size: 1.1rem;
+                padding: 0.5rem 1rem;
+                border-radius: 5px;
+
+
+                &:hover{
+                    color: $color_navigation_link_hover;
+                }
+            }
+
+            button {
+                color: $color_navigation_link;
+                border-radius: 15px;
+                background-color: orangered;
+                height: 30px;
+                border: none;
+                width: 100px;
+                font-size: 1.1rem;
+            }
+            button:hover {
+                cursor: pointer;
+                background-color: crimson;
+            }
+            
+        }
+    }
+}

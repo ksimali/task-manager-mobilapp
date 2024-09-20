@@ -1,0 +1,43 @@
+<div class="task-list">
+
+    <div *ngIf="isMobile">
+        <button mat-button color="secondary" (click)="shouldShowCreatedBy()">Created By</button>
+        <button mat-button color="secondary" (click)="shouldShowAssingedTo()">Assigned To</button>
+    </div>
+
+    <ng-container *ngIf="!isMobile || (isMobile && showCreatedBy)">
+        <h2>Tasks Created By</h2>
+        <div class="flex-row">
+            <mat-card *ngFor="let task of createdTasks" class="task-card">
+                <mat-card-header>
+                    <mat-card-title>{{task.description}}</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <p><strong>Assigned To: </strong>{{task.assignedToName}}</p>
+                    <p><strong>Status: </strong>{{task.done ? 'Completed' : 'Pending'}}</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-button color="warn" (click)="deleteTask(task)">Delete Task</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </ng-container>
+    
+    <ng-container *ngIf="!isMobile || (isMobile && showAssignedTo)">
+        <h2>Tasks Assigned To</h2>
+        <div class="flex-row">
+            <mat-card *ngFor="let task of assignedTasks" [ngClass]="{'new-task': shouldHighlight(task.taskUid)}" class="task-card">
+                <mat-card-header>
+                    <mat-card-title>{{task.description}}</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <p><strong>Created by: </strong>{{task.createdByName}}</p>
+                    <p><strong>Status: </strong>{{task.done ? 'Completed' : 'Pending'}}</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-button color="primary" (click)="changeStatus(task)">{{task.done ? 'Mark as Incomplete' : 'Mark as Done'}}</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </ng-container>    
+</div>

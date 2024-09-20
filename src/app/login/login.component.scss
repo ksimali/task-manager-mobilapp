@@ -1,0 +1,58 @@
+.login-container{
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 2rem;
+    background-color: #f4f5f7;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+mat-card{
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: none;
+    background-color: #fff;
+}
+
+mat-card-title{
+    font-family: "Roboto", sans-serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: #3f51b5;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+mat-card-title::after{
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 60px;
+    height: 4px;
+    background-color: #ff5722;
+    border-radius: 2px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+button[type="submit"]{
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 24px;
+    transform: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover{
+    background-color: #303f9f;
+    color: #f4f5f7;
+}

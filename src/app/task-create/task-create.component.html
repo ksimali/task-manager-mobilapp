@@ -1,0 +1,23 @@
+<div class="create-task">
+    <h2>Create Task</h2>
+    <form [formGroup]="taskForm" (ngSubmit)="createTask()">
+
+        <mat-form-field appearance="fill">
+            <mat-label>Description</mat-label>
+            <input matInput formControlName="description" placeholder="Description" required>
+            <mat-error>Description is Required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Select User</mat-label>
+            <mat-select formControlName="uid" required>
+                <mat-option *ngFor="let user of users" [value]="user.uid">
+                    {{user.email}}
+                </mat-option>
+            </mat-select>
+            <mat-error>Email selection is Required</mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit" [disabled]="taskForm.invalid">Create Task</button>
+    </form>
+</div>

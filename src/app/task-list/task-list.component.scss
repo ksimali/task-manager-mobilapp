@@ -1,0 +1,124 @@
+.task-list{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+    background-color: #f4f5f7;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    min-height: 100%;
+}
+
+h2 {
+    color: #3f51b5;
+    font-family: "Robot", sans-serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    position: relative;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+}
+
+h2::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 60px;
+    height: 4px;
+    background-color: #ff5722;
+    border-radius: 2px;
+}
+
+.flex-row{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.task-card{
+    width: 350px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    background-color: #fff;
+}
+
+.task-card:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+.mat-card-header {
+    background-color: #3f51b5;
+    border-radius: 12px 12px 0 0;
+    color: #fff;
+    padding: 1rem;
+}
+
+.mat-card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    font-family: "Robot", sans-serif;
+}
+
+.mat-card-content p{
+    font-size: 1rem;
+    color: #555;
+    font-size: "Robot", sans-serif;
+}
+
+.mat-card-actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem
+}
+
+.mat-card-actions button {
+    border-radius: 20px;
+    padding: 0.5rem 1.5rem;
+    text-transform: none;
+    font-size: "Robot", sans-serif;
+}
+
+button[color="warn"] {
+    background-color: #f44336;
+    color: #fff;
+}
+
+button[color="primary"] {
+    background-color: #2196f3;
+    color: #fff;
+}
+
+button[color="warn"]:hover,
+button[color="primary"]:hover {
+    opacity: 0.8;
+}
+
+.new-task{
+    background-color: #53e0589b;
+    animation: highlight 5s ease-in-out, slideIn 1s ease-out;
+}
+
+@keyframes highlight {
+    0% {
+        background-color: #53e0589b;
+    }
+    100% {
+        background-color: white;
+    }
+}
+
+@keyframes slideIn {
+    0%{
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    100%{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

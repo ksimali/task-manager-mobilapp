@@ -1,0 +1,28 @@
+<div class="signup-container">
+    <mat-card>
+        <mat-card-title>Sign Up</mat-card-title>
+        <form [formGroup]="signupForm" (ngSubmit)="onSignUp()">
+
+            <mat-form-field appearance="outline">
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="name" type="text"/>
+                <mat-error>Invalid Name</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" type="email"/>
+                <mat-error>Invalid Email</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input matInput formControlName="password" type="password"/>
+                <mat-error>Invalid Password</mat-error>
+            </mat-form-field>
+            <mat-card-actions>
+                <button mat-raised-button color="primary" type="submit" [disabled]="signupForm.invalid">Sign Up</button>
+            </mat-card-actions>
+        </form>
+    </mat-card>
+</div>

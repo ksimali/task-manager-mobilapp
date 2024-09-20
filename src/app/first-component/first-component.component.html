@@ -1,0 +1,31 @@
+<h1>{{title}}</h1>
+<p>Test</p>
+
+<div *ngIf = "isVisible; else elseTag">Ceci est visible!</div>
+
+<ng-template #elseTag>
+    <div>Quand c'est pas visible</div>
+</ng-template>
+
+<ul>
+    <li *ngFor="let item of items, let i = index">
+        {{i}} -> {{item}}
+    </li>
+</ul>
+
+<div [ngSwitch]="status">
+    <p *ngSwitchCase = "'active'"> Actif </p>
+    <p *ngSwitchCase = "'inactive'"> Inactif </p>
+    <p *ngSwitchDefault> Non Specifie </p>
+</div>
+
+<div [ngClass] = "{'active': isActive, 'inactive': !isActive}">
+    Contenu
+</div>
+
+<p [ngStyle] = "{'color': color, 'font-size': fontSize + 'px'}">
+    Texte style
+</p>
+
+
+<button (click)="change()">CHANGE</button>
