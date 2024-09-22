@@ -7,6 +7,9 @@
 
     <ng-container *ngIf="!isMobile || (isMobile && showCreatedBy)">
         <h2>Tasks Created By</h2>
+        <div *ngIf="isMobile">
+            <button mat-raised-button color="primary" [routerLink]="['/create']">Create</button>
+        </div>          
         <div class="flex-row">
             <mat-card *ngFor="let task of createdTasks" class="task-card">
                 <mat-card-header>
