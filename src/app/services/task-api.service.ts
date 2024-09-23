@@ -25,6 +25,22 @@ export class TaskApiService {
     return this.http.get(`${this.apiUrl}/assignedto`, { headers })
   }
 
+  //Endpoint pour les tâches assignées à un utilisateur
+  getTasksAssignedToUid(userUid: string, token: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'x-access-token': this.authService.getToken() || "",
+    });
+    return this.http.get(`${this.apiUrl}/assignedto/${userUid}`, { headers });
+  }
+
+  //Endpoint pour les tâches créées par un utilisateur
+  getTasksCreatedByUid(userUid: string, token: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'x-access-token': this.authService.getToken() || "",
+    });
+    return this.http.get(`${this.apiUrl}/createdby/${userUid}`, { headers });
+  }
+
   updateTaskStatus(token: string, taskUid: string, done: boolean): Observable<any>{
     const headers = new HttpHeaders({
       'x-access-token': this.authService.getToken() || "",

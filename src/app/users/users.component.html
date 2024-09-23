@@ -1,1 +1,67 @@
-<p>users works!</p>
+<div class="container">
+    <h2>Users</h2>
+    <form [formGroup]="searchForm" (ngSubmit)="searchTasks()">
+        <mat-form-field appearance="fill">
+            <mat-label>Select User</mat-label>
+            <mat-select formControlName="uid" required>
+                <mat-option *ngFor="let user of users" [value]="user.uid">
+                   {{user.name}} - {{user.email}}
+                </mat-option>
+            </mat-select>
+            <mat-error>Email selection is Required</mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit" [disabled]="searchForm.invalid">Search</button>
+    </form>
+    
+    <div *ngIf="isMobile">
+        <button mat-button color="secondary" (click)="shouldShowCreatedBy()" [class.selected]="activeButton === 'createdBy'">Created By</button>
+        <button mat-button color="secondary" (click)="shouldShowAssingedTo()" [class.selected]="activeButton === 'assignedTo'">Assigned To</button>
+    </div>
+
+    <ng-container *ngIf="!isMobile || (isMobile && showCreatedBy)">
+        <h2>Tasks Created By</h2>
+        <div class="flex-row">
+            <mat-card *ngFor="let task of tasksCreated" class="task-card">
+                <mat-card-header class="c-header">
+                    <mat-card-title>{{task.description}}</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <p><strong>Assigned To: </strong>{{task.assignedToName}}</p>
+                    <p><strong>Status: </strong>{{task.done ? 'Completed' : 'Pending'}}</p>
+                </mat-card-content>
+                <mat-card-actions *ngIf="isCurrentUser">
+                    <button mat-button color="warn" (click)="deleteTask(task)">Delete Task</button>
+                </mat-card-actions>
+            </mat-card>
+            <mat-card *ngIf="tasksCreated && tasksCreated.length === 0">
+                <mat-card-content>
+                    <p>Aucune tâche disponible</p>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </ng-container>
+    
+    <ng-container *ngIf="!isMobile || (isMobile && showAssignedTo)">
+        <h2>Tasks Assigned To</h2>
+        <div class="flex-row">
+            <mat-card *ngFor="let task of tasksAssigned" class="task-card">
+                <mat-card-header class="c-header">
+                    <mat-card-title>{{task.description}}</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <p><strong>Created by: </strong>{{task.createdByName}}</p>
+                    <p><strong>Status: </strong>{{task.done ? 'Completed' : 'Pending'}}</p>
+                </mat-card-content>
+                <mat-card-actions *ngIf="isCurrentUser">
+                    <button mat-button color="primary" (click)="changeStatus(task)">{{task.done ? 'Mark as Incomplete' : 'Mark as Done'}}</button>
+                </mat-card-actions>
+            </mat-card>
+            <mat-card *ngIf="tasksAssigned && tasksAssigned.length === 0">
+                <mat-card-content>
+                    <p>Aucune tâche disponible</p>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </ng-container>
+</div>
+  
