@@ -21,6 +21,7 @@ import { TaskCreateComponent } from './task-create/task-create.component';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { IonicModule } from '@ionic/angular';
+import { UsersComponent } from './users/users.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { IonicModule } from '@ionic/angular';
     TaskEditComponent,
     LoginComponent,
     SignupComponent,
-    TaskCreateComponent
+    TaskCreateComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,

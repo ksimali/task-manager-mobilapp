@@ -5,7 +5,7 @@
       <li *ngIf="isAuth && !isMobile"><a routerLink="/create">Create</a></li>
       <li *ngIf="!isAuth"><a routerLink="/login">Login</a></li>
       <li *ngIf="!isAuth"><a routerLink="/signup">Sign Up</a></li>
-      <li *ngIf="isAuth && isMobile"><a routerLink="/create">Users</a></li>
+      <li *ngIf="isAuth && isMobile"><a routerLink="/users">Users</a></li>
       <li *ngIf="isAuth"><button (click)="logout()">Logout</button></li>
     </ul>
   </nav>
