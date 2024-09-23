@@ -3,6 +3,7 @@ import { UserService } from '../services/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { Capacitor } from '@capacitor/core';
 
 @Component({
   selector: 'app-signup',
@@ -11,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent {
   signupForm: FormGroup;
+  isMobile: boolean;
 
   constructor(private userService: UserService, private fb: FormBuilder, private authService: AuthService, private router: Router){
     this.signupForm = this.fb.group({
@@ -18,6 +20,7 @@ export class SignupComponent {
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
+    this.isMobile = Capacitor.isNativePlatform();
   }
 
   onSignUp(){

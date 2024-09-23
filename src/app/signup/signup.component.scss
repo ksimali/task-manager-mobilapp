@@ -7,6 +7,10 @@
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
+.no-background-shadow {
+    background-color: transparent; /* Supprimer le background-color sur mobile */
+    //box-shadow: none; /* Supprimer le box-shadow sur mobile */
+}
 mat-card{
     padding: 20px;
     border-radius: 12px;
